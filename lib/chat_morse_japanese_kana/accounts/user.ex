@@ -8,6 +8,7 @@ defmodule ChatMorseJapaneseKana.Accounts.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+    has_many :messages, ChatMorseJapaneseKana.Messages.Message, foreign_key: :menssageage_id, where: [messageable_type: "User"], on_delete: :delete_all
 
     timestamps(type: :utc_datetime)
   end
