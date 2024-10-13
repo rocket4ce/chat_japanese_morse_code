@@ -10,7 +10,8 @@ defmodule ChatMorseJapaneseKana.Application do
     children = [
       ChatMorseJapaneseKanaWeb.Telemetry,
       ChatMorseJapaneseKana.Repo,
-      {DNSCluster, query: Application.get_env(:chat_morse_japanese_kana, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:chat_morse_japanese_kana, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ChatMorseJapaneseKana.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: ChatMorseJapaneseKana.Finch},
