@@ -52,6 +52,12 @@ defmodule ChatMorseJapaneseKanaWeb.Router do
 
     live_session :redirect_if_user_is_authenticated,
       on_mount: [{ChatMorseJapaneseKanaWeb.UserAuth, :redirect_if_user_is_authenticated}] do
+      live "/rooms", RoomLive.Index, :index
+      live "/rooms/new", RoomLive.Index, :new
+      live "/rooms/:id/edit", RoomLive.Index, :edit
+
+      live "/rooms/:id", RoomLive.Show, :show
+      live "/rooms/:id/show/edit", RoomLive.Show, :edit
       live "/users/register", UserRegistrationLive, :new
       live "/users/log_in", UserLoginLive, :new
       live "/users/reset_password", UserForgotPasswordLive, :new
