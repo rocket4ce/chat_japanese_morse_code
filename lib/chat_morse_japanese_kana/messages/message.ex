@@ -4,15 +4,14 @@ defmodule ChatMorseJapaneseKana.Messages.Message do
 
   schema "messages" do
     field :body, :string
-    field :messageable_id, :integer
-    field :messageable_type, :string
+    belongs_to :user, ChatMorseJapaneseKana.Accounts.User
     timestamps(type: :utc_datetime)
   end
 
   @doc false
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:body])
-    |> validate_required([:body])
+    |> cast(attrs, [:body, :user_id])
+    |> validate_required([:body, :user_id])
   end
 end
